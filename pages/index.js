@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
 export default class extends Component {
   static async getInitialProps() {
-    const res = await fetch("http://localhost:9000/posts/all");
+    const res = await fetch("https://simple-backend.vercel.app/posts/all");
     const data = await res.json();
     return { posts: data };
   }
