@@ -2,10 +2,16 @@ import Link from "next/link";
 import React from "react";
 import { withRouter } from "next/router";
 class Layout extends React.Component {
+  openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
   render() {
     return (
       <div>
-        <header className="text-gray-700 body-font bg-gray-100">
+        <header className="hidden lg:block text-gray-700 body-font bg-gray-100">
           <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
             <img src="/eat.svg" className="w-12" />
             <span className="hidden lg:flex lg:flex-grow" />
@@ -19,6 +25,24 @@ class Layout extends React.Component {
             </nav>
           </div>
         </header>
+        <div id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn removeHighlight" onClick={this.closeNav}>
+            &times;
+          </a>
+          <Link href="/">
+            <a onClick={this.closeNav} className={`text-purple-700 removeHighlight`}>
+              Posts
+            </a>
+          </Link>
+        </div>
+        <header className="flex lg:hidden text-gray-700 body-font bg-gray-100 p-4">
+          <div className="lg:hidden text-2xl cursor-pointer removeHighlight" onClick={this.openNav}>
+            &#9776;
+          </div>
+          <span className="flex-grow" />
+          <img src="/eat.svg" className="w-8 mr-3" />
+        </header>
+
         <main className="container mx-auto min-h-screen lg:mt-8 lg:mb-10">{this.props.children}</main>
         <section className="antialiased font-sans w-full bg-gray-300 text-left text-black py-8"></section>
       </div>

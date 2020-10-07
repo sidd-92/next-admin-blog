@@ -3,6 +3,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 // Styles
 import "../src/assets/main.css";
+import "../src/assets/custom.css";
 class MyApp extends App {
   render() {
     const { Component, pageProps, store, router } = this.props;
